@@ -57,19 +57,20 @@ class DbAccess {
    }
 
    public function select_codice($codice) {
-      $sql = "SELECT DISTINCT targa, importo, data, ora, luogo, feriti, morti FROM sinistro NATURAL JOIN danno NATURAL JOIN veicolo WHERE codice='$codice';";
+      $sql = "SELECT DISTINCT targa, importo, numero_telefono, nome, cognome, indirizzo, comune_residenza, provincia FROM sinistro NATURAL JOIN danno NATURAL JOIN veicolo NATURAL JOIN proprietario WHERE codice='$codice';";
       $conn = $this->connect();
       $result = mysqli_query($conn, $sql);
       $list= array();
       while ($row = $result->fetch_assoc()) {
          $select = [
             'targa' => $row['targa'],
+            'numero_telefono' => $row['numero_telefono'],
             'importo' => $row['importo'],
-            'data' => $row['data'],
-            'ora' => $row['ora'],
-            'luogo' => $row['luogo'],
-            'feriti' => $row['feriti'],
-            'morti' => $row['morti'],         
+            'nome' => $row['nome'],
+            'cognome' => $row['cognome'],
+            'indirizzo' => $row['indirizzo'],
+            'comune_residenza' => $row['comune_residenza'],
+            'provincia' => $row['provincia'],         
          ];
          $list[] = $select;
       }

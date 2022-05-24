@@ -89,22 +89,24 @@ refresh1(list) {
       <tr>
          <th><h1>TARGA</h1></th>
          <th><h1>IMPORTO</h1></th>
-         <th><h1>LUOGO</h1></th>
-         <th><h1>DATA</h1></th>
-         <th><h1>ORA</h1></th>
-         <th><h1>FERITI</h1></th>
-         <th><h1>MORTI</h1></th>
+         <th><h1>NOME</h1></th>
+         <th><h1>COGNOME</h1></th>
+         <th><h1>INDIRIZZO</h1></th>
+         <th><h1>COMUNE</h1></th>
+         <th><h1>PROVINCIA</h1></th>
+         <th><h1>TELEFONO</h1></th>
       </tr>`;
    document.querySelector('thead').innerHTML = val;
    let template = `
       <tr>
          <td>%TARGA</td>
          <td>%IMPORTO</td>
-         <td>%LUOGO</td>
-         <td>%DATA</td>
-         <td>%ORA</td>
-         <td>%FERITI</td>
-         <td>%MORTI</td>
+         <td>%NOME</td>
+         <td>%COGNOME</td>
+         <td>%INDIRIZZO</td>
+         <td>%COMUNE</td>
+         <td>%PROVINCIA</td>
+         <td>%TELEFONO</td>
       </tr>
    `;
    let html = "";
@@ -115,11 +117,12 @@ refresh1(list) {
       let row = template;
       row = row.replace("%TARGA", element.targa);
       row = row.replace("%IMPORTO", element.importo);
-      row = row.replace("%LUOGO", element.luogo);
-      row = row.replace("%DATA", date.toLocaleDateString());
-      row = row.replace("%ORA", element.ora);
-      row = row.replace("%FERITI", element.feriti);
-      row = row.replace("%MORTI", element.morti);
+      row = row.replace("%NOME", element.nome);
+      row = row.replace("%COGNOME", element.cognome);
+      row = row.replace("%INDIRIZZO", element.indirizzo);
+      row = row.replace("%COMUNE", element.comune_residenza);
+      row = row.replace("%PROVINCIA", element.provincia);
+      row = row.replace("%TELEFONO", element.numero_telefono);
       html += row;
    });
 
